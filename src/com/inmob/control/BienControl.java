@@ -13,10 +13,6 @@ private Conexion conexion;
 		this.conexion = conexion;
 	}
 
-	/*
-	 * *****************************************************************************
-	 * List
-	 ******************************************************************************/
 	public ArrayList<Bien> list() throws Throwable {
 		ArrayList<Bien> Bienes = new ArrayList<Bien>();
 		ResultSet rs;
@@ -43,26 +39,17 @@ private Conexion conexion;
 
 	}
 
-		/*
-	 * *****************************************************************************
-	 * Insert
-	 ******************************************************************************/
 	public void insert(Bien bien) throws Throwable {
 
-		conexion.SQL("Insert into bienes(bien_id,tipo_id,direccion,descripcion,disponibilidad) VALUES(?,?,?,?,?)");
-		conexion.preparedStatement().setInt(1, bien.getBien_id());
-		conexion.preparedStatement().setInt(2, bien.getTipo_id());
-		conexion.preparedStatement().setString(3, bien.getDireccion());
-		conexion.preparedStatement().setString(4, bien.getDescripcion());
-		conexion.preparedStatement().setBoolean(5, bien.isDisponibilidad());
+		conexion.SQL("Insert into bienes(tipo_id,direccion,descripcion,disponibilidad) VALUES(?,?,?,?)");
+		conexion.preparedStatement().setInt(1, bien.getTipo_id());
+		conexion.preparedStatement().setString(2, bien.getDireccion());
+		conexion.preparedStatement().setString(3, bien.getDescripcion());
+		conexion.preparedStatement().setBoolean(4, bien.isDisponibilidad());
 		conexion.CUD();
 
 	}
 
-/*
-	 * *****************************************************************************
-	 * Search
-	 ******************************************************************************/
 
 	public int ultimocodigo()throws Throwable {
 	 ResultSet rs;
@@ -101,11 +88,6 @@ private Conexion conexion;
 		}
 		rs.close();
 	}
-
-	/*
-	 * *****************************************************************************
-	 * Update
-	 ******************************************************************************/
 
 	public void update(Bien bien) throws Throwable {
 		int bien_id;

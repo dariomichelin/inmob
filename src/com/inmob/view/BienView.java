@@ -2,14 +2,10 @@ package com.inmob.view;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import com.inmob.control.TipoControl;
 import com.inmob.control.BienControl;
 import com.inmob.control.Conexion;
 import com.inmob.entity.Bien;
-import com.inmob.entity.Tipo;
 import com.inmob.view.Menu.MenuBien;
-import com.inmob.view.Menu.MenuTipo;
 
 
 public class BienView {
@@ -19,19 +15,13 @@ public class BienView {
 	private Bien bien;
 	private BienControl biencontrol;
 	
-	/**********************************************************************************************************************
-	*
-	***********************************************************************************************************************/
 	public BienView(Conexion conexion, Scanner scanner) {
 	
 		this.scanner = scanner;
 		biencontrol = new  BienControl(conexion);
 		
 	}
-	/**
-	 * ********************************************************************************************************************
-	*
-	***********************************************************************************************************************/
+	
 	public void insertar() throws Throwable {
 		int bien_id;
 		int tipo_id;
@@ -52,9 +42,7 @@ public class BienView {
 		}
 
 	}
-	/**********************************************************************************************************************
-	*
-	***********************************************************************************************************************/
+	
 	public void listar() {
 		ArrayList<Bien> bienes;
 
@@ -68,9 +56,6 @@ public class BienView {
 		}
 	}
 
-	/**********************************************************************************************************************
-	*
-	***********************************************************************************************************************/
 	public void buscar(int bien_id) {
 		bien= new Bien(bien_id,0,"","",false);
 		try {
@@ -81,11 +66,7 @@ public class BienView {
 		}
 	}
 
-	/**********************************************************************************************************************
-	*
-	***********************************************************************************************************************/
-
-	public void actualizar() {
+		public void actualizar() {
 		int bien_id;
 	
 		bien_id = ReadTypes.leerEntero(scanner, "Ingrese el codigo del bien a modificar: ");

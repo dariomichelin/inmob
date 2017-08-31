@@ -11,15 +11,10 @@ public class Pantalla {
 		Scanner scanner = new Scanner(System.in);
 		Conexion conexion = new Conexion();
 		BienView tipoview = new BienView(conexion,scanner);
-		
-/*		for (int i = 1; i < 3; i++) {
-			ClienteView.insertar(conexion, scanner);
-		}*/
-		
-		//tipoview.listar();
+		tipoview.listar();
 		//tipoview.actualizar();
 		//tipoview.buscar(1);
-		tipoview.insertar();
+		//tipoview.insertar();
 		
 		
 		try {

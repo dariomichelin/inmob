@@ -13,10 +13,6 @@ private Conexion conexion;
 		this.conexion = conexion;
 	}
 
-	/*
-	 * *****************************************************************************
-	 * List
-	 ******************************************************************************/
 	public ArrayList<Tipo> list() throws Throwable {
 		ArrayList<Tipo> Tipos = new ArrayList<Tipo>();
 		ResultSet rs;
@@ -39,10 +35,6 @@ private Conexion conexion;
 
 	}
 
-		/*
-	 * *****************************************************************************
-	 * Insert
-	 ******************************************************************************/
 	public void insert(Tipo tipo) throws Throwable {
 
 		conexion.SQL("Insert into Tipo(tipo_id,tipo,descripcion) VALUES(?,?,?)");
@@ -53,10 +45,6 @@ private Conexion conexion;
 
 	}
 
-/*
-	 * *****************************************************************************
-	 * Search
-	 ******************************************************************************/
 
 	public int ultimocodigo()throws Throwable {
 	 ResultSet rs;
@@ -92,11 +80,6 @@ private Conexion conexion;
 		}
 		rs.close();
 	}
-
-	/*
-	 * *****************************************************************************
-	 * Update
-	 ******************************************************************************/
 
 	public void update(Tipo Tipo) throws Throwable {
 		int tipo_id;
