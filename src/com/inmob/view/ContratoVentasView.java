@@ -89,7 +89,7 @@ public class ContratoVentasView {
 			System.out.println(e1.getMessage());
 		}
 
-		MenuContratoAlq.menuModificar(scanner, contrato);
+		MenuContratoVenta.menuModificar(scanner, contrato);
 
 		try {
 			control.update(contrato);
@@ -99,4 +99,3 @@ public class ContratoVentasView {
 	}
 	
 }
-
