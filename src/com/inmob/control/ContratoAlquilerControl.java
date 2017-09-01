@@ -33,8 +33,17 @@ private Conexion conexion;
 		rs = conexion.resultSet();
 
 		while (rs.next()) {
-
-
+			contrato_id=rs.getInt("contrato_id");
+			precio_alquiler_final=rs.getDouble("precio_alquiler_final");
+			detalle_alquiler_id=rs.getInt("precio_alquiler_id");
+			nombre_inquilino=rs.getString("nombre_inquilino");
+			telefono_inquilino=rs.getString("telefono");
+			referencias=rs.getString("referencias");
+			CI_inquilino=rs.getInt("CI_inquilino");
+			detalles_pago=rs.getString("detalles_pago");
+			fecha_inicio=rs.getDate("fecha_inicio");
+			fecha_fin=rs.getDate("fecha_fin");
+			Contratos.add(new Contrato_alquiler(contrato_id,precio_alquiler_final,detalle_alquiler_id,nombre_inquilino,telefono_inquilino,referencias,CI_inquilino,detalles_pago,fecha_inicio,fecha_fin));
 		}
 
 		return Contratos;
@@ -128,7 +137,7 @@ private Conexion conexion;
 			fecha_inicio=contrato.getFecha_inicio();
 			fecha_fin=contrato.getFecha_fin();
 			
-			conexion.SQL("Update contrato_venta set tipo_id = ?, direccion = ?, descripcion = ?, disponibilidad = ? where bien_id=?");
+			conexion.SQL("Update contrato_venta set precio_alquiler_final=?, detalle_alquiler_final=?, nombre_inquilino=?, telefono=?, referencias=?, CI_inquilino=?, detalles_pago=?, fecha_inicio=?, fecha_fin=? where contrato_id=?");
 			conexion.preparedStatement().setInt(1, contrato_id);
 			conexion.preparedStatement().setDouble(2, precio_alquiler_final);
 			conexion.preparedStatement().setInt(3, detalle_alquiler_id);
