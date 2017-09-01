@@ -7,7 +7,7 @@ import java.util.Date;
 import com.inmob.entity.Contrato_alquiler;
 import com.inmob.entity.Contrato_venta;
 
-public class ContratoVentaControl implements Control<Contrato_alquiler> {
+public class ContratoVentaControl implements Control<Contrato_venta> {
 
 private Conexion conexion;
 	
@@ -111,41 +111,40 @@ private Conexion conexion;
 		rs.close();
 	}
 
-	public void update(Contrato_alquiler contrato) throws Throwable {
+	public void update(Contrato_venta contrato) throws Throwable {
 		int contrato_id;
-		double precio_alquiler_final;
-		int detalle_alquiler_id;
-		String nombre_inquilino;
-		String telefono_inquilino;
+		double precio_venta_final;
+		int detalle_venta_id;
+		String nombre_comprador;
+		String telefono_comprador;
 		String referencias;
-		int CI_inquilino;
+		String CI_comprador;
 		String detalles_pago;
-		Date fecha_inicio;
-		Date fecha_fin;
+		Date fecha_venta;
 		if (contrato != null) {
 			contrato_id=contrato.getContrato_id();
-			precio_alquiler_final=contrato.getPrecio_alquiler_final();
-			detalle_alquiler_id=contrato.getDetalle_alquiler_id();
-			nombre_inquilino=contrato.getNombre_inquilino();
-			telefono_inquilino=contrato.getTelefono_inquilino();
+			precio_venta_final=contrato.getPrecio_venta_final();
+			detalle_venta_id=contrato.getDetalle_venta_id();
+			nombre_comprador=contrato.getNombre_comprador();
+			telefono_comprador=contrato.getTelefono_comprador();
 			referencias=contrato.getReferencias();
-			CI_inquilino=contrato.getCI_inquilino();
+			CI_comprador=contrato.getCI_comprador();
 			detalles_pago=contrato.getDetalles_pago();
-			fecha_inicio=contrato.getFecha_inicio();
-			fecha_fin=contrato.getFecha_fin();
+			fecha_venta=contrato.getFecha_venta();
 			
 			conexion.SQL("Update contrato_venta set precio_alquiler_final=?, detalle_alquiler_final=?, nombre_inquilino=?, telefono=?, referencias=?, CI_inquilino=?, detalles_pago=?, fecha_inicio=?, fecha_fin=? where contrato_id=?");
 			conexion.preparedStatement().setInt(1, contrato_id);
-			conexion.preparedStatement().setDouble(2, precio_alquiler_final);
-			conexion.preparedStatement().setInt(3, detalle_alquiler_id);
-			conexion.preparedStatement().setString(4, nombre_inquilino);
-			conexion.preparedStatement().setString(5, telefono_inquilino);
+			conexion.preparedStatement().setDouble(2, precio_venta_final);
+			conexion.preparedStatement().setInt(3, detalle_venta_id);
+			conexion.preparedStatement().setString(4, nombre_comprador);
+			conexion.preparedStatement().setString(5, telefono_comprador);
 			conexion.preparedStatement().setString(6, referencias);
-			conexion.preparedStatement().setInt(7, CI_inquilino);
+			conexion.preparedStatement().setString(7, CI_comprador);
 			conexion.preparedStatement().setString(8, detalles_pago);
-			conexion.preparedStatement().setDate(9, (java.sql.Date) fecha_inicio);
-			conexion.preparedStatement().setDate(10, (java.sql.Date) fecha_fin);
+			conexion.preparedStatement().setDate(9, (java.sql.Date) fecha_venta);
 			conexion.CUD();
 		}
-	}	
-}
+	}
+
+		
+	}
