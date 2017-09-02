@@ -11,14 +11,14 @@ import com.inmob.entity.Contrato_venta;
 import com.inmob.view.Menu.MenuBien;
 
 
-public class ContratoVentasView {
+public class ContratoVentaView {
 
 	
 	private Scanner scanner;
 	private Contrato_venta contrato;
 	private ContratoVentaControl control;
 	
-	public ContratoVentasView(Conexion conexion, Scanner scanner) {
+	public ContratoVentaView(Conexion conexion, Scanner scanner) {
 	
 		this.scanner = scanner;
 		control = new  ContratoVentaControl(conexion);
