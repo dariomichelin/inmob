@@ -10,7 +10,7 @@ public class Pantalla {
 	public static void main(String[] args) throws Throwable   {
 		Scanner scanner = new Scanner(System.in);
 		Conexion conexion = new Conexion();
-		BienView tipoview = new BienView(conexion,scanner);
+		Detalle_alquilerView tipoview = new Detalle_alquilerView(conexion,scanner);
 		tipoview.listar();
 		//tipoview.actualizar();
 		//tipoview.buscar(1);

@@ -37,7 +37,6 @@ public class ContratoAlquilerView {
 		int CI_inquilino;
 		String referencias;
 		String detalles_pago;
-		String datos_dueño;
 		Date fecha_inicio;
 		Date fecha_fin;
 
@@ -48,7 +47,6 @@ public class ContratoAlquilerView {
 		detalle_alquiler_id=ReadTypes.leerEntero(scanner, "Ingrese el codigo de detalle correspondiente: ");
 		CI_inquilino = ReadTypes.leerEntero(scanner, "Ingrese el CI del inquilino: ");
 		referencias = ReadTypes.leerCadena(scanner, "Ingrese las referencias del inquilino: (nombre, telefono)");
-		datos_dueño=ReadTypes.leerCadena(scanner, "Ingrese los datos del dueño para pagar servicios: ");
 		detalles_pago = ReadTypes.leerCadena(scanner, "Ingrese detalles de pago: ");
 		fecha_inicio=ReadTypes.leerFecha(scanner, "ingrese la fecha de inicio del alquiler: ");
 		fecha_fin=ReadTypes.leerFecha(scanner, "ingrese la fecha de fin del alquiler: ");
