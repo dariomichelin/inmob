@@ -9,7 +9,6 @@ import com.inmob.entity.Contrato_alquiler;
 public class ContratoAlquilerControl implements Control<Contrato_alquiler> {
 
 private Conexion conexion;
-	
 	public ContratoAlquilerControl(Conexion conexion) {
 		this.conexion = conexion;
 	}
@@ -25,8 +24,8 @@ private Conexion conexion;
 		String referencias;
 		int CI_inquilino;
 		String detalles_pago;
-		Date fecha_inicio;
-		Date fecha_fin;
+		java.sql.Date fecha_inicio;
+		java.sql.Date fecha_fin;
 		
 		conexion.SQL("Select * from contrato_alquiler inner join detalle_alquiler on detalle_alquiler.detalle_alquiler_id=contrato_alquiler.detalle_alquiler_id");
 
@@ -60,8 +59,8 @@ private Conexion conexion;
 		conexion.preparedStatement().setString(5, contrato_alq.getReferencias());
 		conexion.preparedStatement().setInt(6, contrato_alq.getCI_inquilino());
 		conexion.preparedStatement().setString(3, contrato_alq.getDetalles_pago());
-		conexion.preparedStatement().setDate(8, (java.sql.Date) contrato_alq.getFecha_inicio());
-		conexion.preparedStatement().setDate(9, (java.sql.Date) contrato_alq.getFecha_fin());
+		conexion.preparedStatement().setDate(8, contrato_alq.getFecha_inicio()) ;
+		conexion.preparedStatement().setDate(9, contrato_alq.getFecha_fin());
 		conexion.CUD();
 
 	}
