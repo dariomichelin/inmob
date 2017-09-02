@@ -9,6 +9,7 @@ import com.inmob.control.ContratoVentaControl;
 import com.inmob.entity.Bien;
 import com.inmob.entity.Contrato_venta;
 import com.inmob.view.Menu.MenuBien;
+import com.inmob.view.Menu.MenuContratoVenta;
 
 
 public class ContratoVentaView {

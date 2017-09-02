@@ -11,6 +11,7 @@ import com.inmob.entity.Bien;
 import com.inmob.entity.Contrato_alquiler;
 import com.inmob.entity.Contrato_venta;
 import com.inmob.view.Menu.MenuBien;
+import com.inmob.view.Menu.MenuContratoAlq;
 
 
 public class ContratoAlquilerView {

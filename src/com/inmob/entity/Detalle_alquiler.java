@@ -16,7 +16,7 @@ public class Detalle_alquiler {
 	
 	private int agente_id;
 	
-	public Detalle_alquiler(int detalle_alquiler_id, int bien_id, int contrato_id, double precio_alquiler, double comision,
+	public Detalle_alquiler(int detalle_alquiler_id, int bien_id, double precio_alquiler, double comision,
 			String seguimiento_alquiler, String datos_dueño, int agente_id) {
 		super();
 		this.detalle_alquiler_id = detalle_alquiler_id;
