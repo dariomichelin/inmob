@@ -45,7 +45,7 @@ public class Detalle_alquilerControl {
 	
 	public void insert(Detalle_alquiler detalle_alquiler) throws Throwable {
 
-		conexion.SQL("Insert into detalle_alquiler(bien_id,precio_alquiler,comision,seguimiento_alquiler,datos_dueño,agente_id) VALUES(?,?,?,?,?,?)");
+		conexion.SQL("Insert into detalle_alquiler(bien_id,precio_alquiler,comision,seguimiento_alquiler,datos_dueño,agente_id) VALUES(?,?,?,?,?,?) inner join agentes on agentes.agente_id = detalle_alquiler.agente_id inner join bienes on bienes.bien_id = detalle_alquiler.bien_id");
 		conexion.preparedStatement().setInt(1, detalle_alquiler.getBien_id());
 		conexion.preparedStatement().setDouble(2, detalle_alquiler.getPrecio_alquiler());
 		conexion.preparedStatement().setDouble(3, detalle_alquiler.getComision());
@@ -117,7 +117,7 @@ public class Detalle_alquilerControl {
 			datos_dueño = Detalle_alquiler.getDatos_dueño();
 			agente_id = Detalle_alquiler.getAgente_id();
 			
-			conexion.SQL("Update detalle_alquiler set bien_id = ?, precio_alquiler = ?, comision = ?, seguimiento_alquiler = ?, datos_dueño = ?, agente_id = ?  where detalle_alquiler_id=?");
+			conexion.SQL("Update detalle_alquiler set bien_id = ?, precio_alquiler = ?, comision = ?, seguimiento_alquiler = ?, datos_dueño = ?, agente_id = ? inner join agentes on agentes.agente_id = detalle_alquiler.agente_id inner join bienes on bienes.bien_id = detalle_alquiler.bien_id where detalle_alquiler_id=?");
 			conexion.preparedStatement().setInt(1, bien_id);
 			conexion.preparedStatement().setDouble(2, precio_alquiler);
 			conexion.preparedStatement().setDouble(3, comision);

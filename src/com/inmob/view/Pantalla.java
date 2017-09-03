@@ -10,11 +10,11 @@ public class Pantalla {
 	public static void main(String[] args) throws Throwable   {
 		Scanner scanner = new Scanner(System.in);
 		Conexion conexion = new Conexion();
-		ContratoAlquilerView tipoview = new ContratoAlquilerView(conexion,scanner);
+		Detalles_ventaView tipoview = new Detalles_ventaView(conexion,scanner);
 		tipoview.listar();
-		//tipoview.actualizar();
+		tipoview.actualizar();
 		//tipoview.buscar(1);
-		tipoview.insertar();
+		//tipoview.insertar();
 		
 		
 		try {

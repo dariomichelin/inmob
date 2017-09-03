@@ -46,40 +46,32 @@ public class MenuAgente {
 				salir = true;
 				break;
 			case 1:
-				System.out.print("Codigo del agente anterior: ");
-				System.out.println(agente.getAgente_id());
+				System.out.print("Nombre del agente: ");
+				System.out.println(agente.getNombre());
 				String nombre = ReadTypes.leerCadena(scanner, "Ingrese el nuevo nombre del Agente: ");
 				agente.setNombre(nombre);
-				agente.setApellidos(agente.getApellidos());
-				agente.setContacto(agente.getContacto());
-				agente.setTelefono(agente.getTelefono());
+				System.out.println(agente.toString());
 				break;
 			case 2:
 				System.out.print("Codigo del agente anterior: ");
 				System.out.println(agente.getAgente_id());
 				String apellidos = ReadTypes.leerCadena(scanner, "Ingrese el apellido del Agente: ");
-				agente.setApellidos(apellidos);
-				agente.setNombre(agente.getNombre());
-				agente.setContacto(agente.getContacto());
-				agente.setTelefono(agente.getTelefono());
+				agente.setNombre(apellidos);
+				System.out.println(agente.toString());
 				break;
 			case 3:
 				System.out.print("Codigo del agente anterior: ");
 				System.out.println(agente.getAgente_id());
 				String contacto = ReadTypes.leerCadena(scanner, "Ingrese el contacto del Agente: ");
 				agente.setContacto(contacto);
-				agente.setNombre(agente.getNombre());
-				agente.setApellidos(agente.getApellidos());
-				agente.setTelefono(agente.getTelefono());
+				System.out.println(agente.toString());
 				break;
 			case 4:
 				System.out.print("Codigo del agente anterior: ");
 				System.out.println(agente.getAgente_id());
 				String telefono = ReadTypes.leerCadena(scanner, "Ingrese el telefono del Agente: ");
 				agente.setTelefono(telefono);
-				agente.setNombre(agente.getNombre());
-				agente.setApellidos(agente.getApellidos());
-				agente.setContacto(agente.getContacto());
+				System.out.println(agente.toString());
 				break;
 			}
 		}

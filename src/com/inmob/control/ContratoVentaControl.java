@@ -2,19 +2,29 @@ package com.inmob.control;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
-
-import com.inmob.entity.Contrato_alquiler;
 import com.inmob.entity.Contrato_venta;
 
 public class ContratoVentaControl implements Control<Contrato_venta> {
 
 private Conexion conexion;
-	
 	public ContratoVentaControl(Conexion conexion) {
 		this.conexion = conexion;
 	}
-//marcelo777
+	public java.sql.Date sqlDate (Date date) 
+	{
+		int year = date.getYear();
+		int month = date.getMonth();
+		int day =date.getDay();
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, year);
+		cal.set(Calendar.MONTH, month - 1);
+		cal.set(Calendar.DAY_OF_MONTH, day);
+
+		java.sql.Date sqldate = new java.sql.Date(cal.getTimeInMillis());
+		return sqldate;
+	}
 	public ArrayList<Contrato_venta> list() throws Throwable {
 		ArrayList<Contrato_venta> Contratos = new ArrayList<Contrato_venta>();
 		ResultSet rs;
@@ -36,8 +46,8 @@ private Conexion conexion;
 			contrato_id=rs.getInt("contrato_id");
 			precio_venta_final=rs.getDouble("precio_venta_final");
 			detalle_venta_id=rs.getInt("detalle_venta_id");
-			nombre_comprador=rs.getString("nombre_inquilino");
-			telefono_comprador=rs.getString("telefono");
+			nombre_comprador=rs.getString("nombre_comprador");
+			telefono_comprador=rs.getString("telefono_comprador");
 			referencias=rs.getString("referencias");
 			CI_comprador=rs.getString("CI_comprador");
 			detalles_pago=rs.getString("detalles_pago");
@@ -49,7 +59,6 @@ private Conexion conexion;
 		return Contratos;
 
 	}
-
 	public void insert(Contrato_venta contrato_alq) throws Throwable {
 
 		conexion.SQL("Insert into contrato_venta(precio_venta_final,detalle_venta_id,nombre_comprador,telefono_comprador,referencias,CI_comprador,detalles_pago,fecha_venta) VALUES(?,?,?,?,?,?,?,?)");
@@ -60,12 +69,10 @@ private Conexion conexion;
 		conexion.preparedStatement().setString(5, contrato_alq.getReferencias());
 		conexion.preparedStatement().setString(6, contrato_alq.getCI_comprador());
 		conexion.preparedStatement().setString(3, contrato_alq.getDetalles_pago());
-		conexion.preparedStatement().setDate(8, (java.sql.Date) contrato_alq.getFecha_venta());
+		conexion.preparedStatement().setDate(8, sqlDate(contrato_alq.getFecha_venta()));
 		conexion.CUD();
 
 	}
-
-
 	public int ultimocodigo()throws Throwable {
 	 ResultSet rs;
 	 int contrato_id=0;
@@ -78,14 +85,11 @@ private Conexion conexion;
 	 rs.close();
 	 return contrato_id;
 	}
-	
-	
-	
 	public void search(Contrato_venta contrato) throws Throwable {
 
 		ResultSet rs;
 
-		conexion.SQL("Select * from contrato_venta where codigo_contrato_id=?");
+		conexion.SQL("Select * from contrato_venta where contrato_id=?");
 		conexion.preparedStatement().setInt(1, contrato.getContrato_id());
 		contrato.setPrecio_venta_final(0);
 		contrato.setDetalle_venta_id(0);
@@ -99,7 +103,7 @@ private Conexion conexion;
 		rs = conexion.resultSet();
 
 		while (rs.next()) {
-			contrato.setPrecio_venta_final(rs.getDouble("precio_alquiler_final"));
+			contrato.setPrecio_venta_final(rs.getDouble("precio_venta_final"));
 			contrato.setDetalle_venta_id(rs.getInt("detalle_venta_id"));
 			contrato.setNombre_comprador(rs.getString("nombre_comprador"));
 			contrato.setTelefono_comprador(rs.getString("telefono_comprador"));
@@ -110,7 +114,6 @@ private Conexion conexion;
 			}
 		rs.close();
 	}
-
 	public void update(Contrato_venta contrato) throws Throwable {
 		int contrato_id;
 		double precio_venta_final;
@@ -132,7 +135,7 @@ private Conexion conexion;
 			detalles_pago=contrato.getDetalles_pago();
 			fecha_venta=contrato.getFecha_venta();
 			
-			conexion.SQL("Update contrato_venta set precio_alquiler_final=?, detalle_alquiler_final=?, nombre_inquilino=?, telefono=?, referencias=?, CI_inquilino=?, detalles_pago=?, fecha_inicio=?, fecha_fin=? where contrato_id=?");
+			conexion.SQL("Update contrato_venta set precio_venta_final=?, detalle_venta_id=?, nombre_comprador=?, telefono_comprador=?, referencias=?, CI_comprador=?, detalles_pago=?, fecha_fecha_venta=?, where contrato_id=?");
 			conexion.preparedStatement().setInt(1, contrato_id);
 			conexion.preparedStatement().setDouble(2, precio_venta_final);
 			conexion.preparedStatement().setInt(3, detalle_venta_id);
@@ -141,10 +144,8 @@ private Conexion conexion;
 			conexion.preparedStatement().setString(6, referencias);
 			conexion.preparedStatement().setString(7, CI_comprador);
 			conexion.preparedStatement().setString(8, detalles_pago);
-			conexion.preparedStatement().setDate(9, (java.sql.Date) fecha_venta);
+			conexion.preparedStatement().setDate(9, sqlDate(fecha_venta));
 			conexion.CUD();
 		}
 	}
-
-		
-	}
+}
